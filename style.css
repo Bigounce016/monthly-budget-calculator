@@ -100,8 +100,8 @@ nav a:hover {
   
   /* Active Step */
   .step.active .circle {
-    background: #1e73ff;
-    border-color: #1e73ff;
+    background: #0A5AA7;
+    border-color: #0A5AA7;
     color: white;
   }
 
@@ -154,6 +154,21 @@ nav a:hover {
   footer nav a:hover {
     color: var(--brand-color-light);
   }
+
+
+.dropdown {
+    display: flex;
+
+}
+
+#career {
+    color: white;
+    background-color: #0A5AA7;
+    padding: 16px;
+    font-size: 24px;
+    width: 50vw;
+}
+
 
 
 
