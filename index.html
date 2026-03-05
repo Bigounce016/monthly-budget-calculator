@@ -64,32 +64,71 @@
         <h2>Step 1</h2>
         <div class="dropdown">
           <select id="career" name="career">
-            <option value="student">Select Job Option</option>
-            <option value="employed">Employed</option>
-            <option value="self-employed">Self-employed</option>
-            <option value="unemployed">Unemployed</option>
+            <option value="" disabled selected hidden>Select Job Option <img src="#" alt="dropdown arrow"></option>
           </select>
         </div>
+        <section>
+          <h3>Taxes</h3>
+          <p id="careerTitle"></p>
+        </section>
       </section>
 
       <section class="step-content">
-        <h2>Step 2</h2>
+        <h2>Monthly Budget</h2>
+        <h3>Housing:</h3>
+        <button class="add-category" id="house-add">Add Category</button>
+
+        <input type="text" id="rent" class="expense house" placeholder="Mortgage/Rent">
+        <input type="text" id="home-insurance" class="expense house" placeholder="Renter/Home Insurance">
+        <input type="text" id="water" class="expense house" placeholder="Water">
+        <input type="text" id="electric" class="expense house" placeholder="Electric">
+        <input type="text" id="gas" class="expense house" placeholder="Gas">
+        <input type="text" id="TV" class="expense house" placeholder="TV">
+        <input type="text" id="cable" class="expense house" placeholder="Cable">
+        <input type="text" id="internet" class="expense house" placeholder="Internet">
+        <input type="text" id="phone" class="expense house" placeholder="Phone">
       </section>
 
       <section class="step-content">
-        <h2>Step 3</h2>
+        <h2>Monthly Budget</h2>
+        <h3>Transportation:</h3>
+        <button class="add-category" id="transport-add">Add Category</button>
+
+        <input type="text" id="car-pay" class="expense transport" placeholder="Car Payment">
+        <input type="text" id="car-insurance" class="expense transport" placeholder="Car Insurance">
+        <input type="text" id="gasoline" class="expense transport" placeholder="Gas">
+        <input type="text" id="car-repair" class="expense transport" placeholder="Car Repairs">
       </section>
 
       <section class="step-content">
-        <h2>Step 4</h2>
+        <h2>Monthly Budget</h2>
+        <h3>Educational:</h3>
+        <button class="add-category" id="edu-add">Add Category</button>
+
+        <input type="text" id="supplies" class="expense education" placeholder="School Supplies">
+        <input type="text" id="edu-loan" class="expense education" placeholder="Student Loans">
+        <input type="text" id="tuition" class="expense education" placeholder="College Tuition">
       </section>
 
       <section class="step-content">
-        <h2>Step 5</h2>
+        <h2>Monthly Budget</h2>
+        <h3>Food & Personal:</h3>
+        <button class="add-category" id="food-add">Add Category</button>
+
+        <input type="text" id="groceries" class="expense food" placeholder="Groceries/Household">
+        <input type="text" id="clothes" class="expense food" placeholder="Clothing">
+        <input type="text" id="entertainment" class="expense food" placeholder="Entertainment">
+        <input type="text" id="pet" class="expense food" placeholder="Pet Supplies">
       </section>
 
       <section class="step-content">
-        <h2>Step 6</h2>
+        <h2>Monthly Budget</h2>
+        <h3>Savings:</h3>
+        <button class="add-category" id="savings-add">Add Category</button>
+
+        <input type="text" id="savings-emergency" class="expense savings" placeholder="Emergency Funds">
+        <input type="text" id="invest" class="expense savings" placeholder="Investments">
+        <input type="text" id="retire" class="expense savings" placeholder="Retirement">
       </section>
     </main>
     <footer>
