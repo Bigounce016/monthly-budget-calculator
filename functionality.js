@@ -4,6 +4,10 @@
 function init() {
     const steps = document.querySelectorAll(".step a"); // Select all step circles
     const content = document.querySelectorAll(".step-content"); // Select all content sections
+    const inputs = document.querySelectorAll(".expense"); //grab all input boxes
+    const canvas = document.getElementById("myChart");
+    const calculator = document.getElementById("Calculator");
+
     steps.forEach((step, index) => {
         step.addEventListener("click", () => {
             // Remove active class from all steps
@@ -24,9 +28,9 @@ function init() {
     });
 
     async function getCareers() {
-        const url = "https://eecu-data-server.vercel.app/data";
+        const url = "https://eecu-data-server.vercel.app/data"; //grab url
         try {
-            const response = await fetch(url);
+            const response = await fetch(url); //wait to grab array of objects
             const jobs = await response.json();
             createOptions(jobs);
             return jobs;
@@ -41,22 +45,37 @@ function init() {
         const dropdown = document.getElementById("career");
 
         careers.forEach((career, index) => {
-        const option = document.createElement("option");
+        const option = document.createElement("option"); //creatng options for dropdown
 
          option.innerHTML = `${career.Occupation}: $${career.Salary}`;
-         option.setAttribute("id", `${index}`);
+         option.setAttribute("id", `${index}`); //assigning ids
+         option.addEventListener("click", () => {
+            console.log(career.Salary);
+         })
 
         dropdown.appendChild(option);
         });
-
-        dropdown.addEventListener("input", (input) => { //maybe replace with "options.addEventListener"?
-            console.log(input); //figure out a way to grab necessary information based off which option was clicked
-        })
     }
-    getCareers();
 
+    let currentChart = new Chart(canvas, 
+        {
+           type: "doughnut",
+           data: {
+             labels: ["House", "Transport", "Education", "Food", "Savings"],
+             datasets: [{ label: "$", data: [0, 0, 0, 0, 0] }]
+           },
+           options: {
+             plugins: {
+               title: { display: true, text: `Expenses by Catagory` }
+             }
+           }
+         }
+   )
+
+    getCareers();
+    save();
     function calcSaveChart() {
-        const inputs = document.getElementsByClassName("expense"); //grab all input boxes
+
         const savedExpenses = {};
         let house = 0;
         let transport = 0; //variables for chart and totals
@@ -84,14 +103,45 @@ function init() {
             else if(input.classList.contains("savings")) {
                 savings += Number(input.value.replace(/[^0-9]/g, '')) || 0;
             }
-
-            localStorage.setItem("savedExpenses", JSON.stringify(savedExpenses)); //saving object
         });
+        localStorage.setItem("savedExpenses", JSON.stringify(savedExpenses)); //saving object
+
+        if (currentChart) currentChart.destroy(); //destroy chart
+        currentChart = new Chart(canvas, //new chart
+            {
+               type: "doughnut",
+               data: {
+                 labels: ["House", "Transport", "Education", "Food", "Savings"],
+                 datasets: [{ label: "$", data: [house, transport, education, food, savings] }]
+               },
+               options: {
+                 plugins: {
+                   title: { display: true, text: `Expenses by Catagory` }
+                 }
+               }
+             }
+       )
     }
+
+    function save() {
+        const pullExpenses = JSON.parse(localStorage.getItem("savedExpenses")); //grab object
+        inputs.forEach(input => {
+        if(pullExpenses){
+            if(pullExpenses[input.id]){
+                input.value = pullExpenses[input.id] //grab object and insert saved values in textbox
+            }
+        }
+        calcSaveChart();
+        })   
+    }
+    calculator.addEventListener("input", ()=>{
+        calcSaveChart(); //for any input, run calculations, save, and chart
+    })
+
 }
 
 
 
 
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", init); //will run upon page loading
