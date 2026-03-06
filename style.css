@@ -115,12 +115,42 @@ nav a:hover {
   }
 
   .step-content.active {
-    display: block;
-  }
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content max-content;
+      background-color: #2D316C;
+      color: white;
+    }
+
+    .step-content.active > div {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .step-content.active h2 {
+      margin: 0;
+      color: white;
+      padding: 2vh 0;
+      background-color: var(--brand-color);
+    }
+
+    .step-content.active span {
+      display: flex;
+      flex-wrap: wrap;  /*Figure out how to align textboxes center somehow, this is roughly center*/
+      gap: .5rem;
+      justify-content: flex-start;
+      width: 80%;
+      margin-left: 10%;
+    }
+
+    .step-content.active span input {
+      width: 48%;
+    }
   
+  /*Styling First section*/
+  /*Footer*/
   footer {
     background-color: var(--brand-color);
-    position: fixed;
     width: 100vw;
     bottom: 0;
     display: flex;

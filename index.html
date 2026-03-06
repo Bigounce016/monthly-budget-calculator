@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sniglet:wght@400;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
@@ -57,7 +58,7 @@
       </div>
     </nav>
 
-    <main>
+    <main id="Calculator">
       <!-- TO DO: Add content to the steps -->
 
       <section class="step-content active">
@@ -75,61 +76,81 @@
 
       <section class="step-content">
         <h2>Monthly Budget</h2>
-        <h3>Housing:</h3>
-        <button class="add-category" id="house-add">Add Category</button>
-
-        <input type="text" id="rent" class="expense house" placeholder="Mortgage/Rent">
-        <input type="text" id="home-insurance" class="expense house" placeholder="Renter/Home Insurance">
-        <input type="text" id="water" class="expense house" placeholder="Water">
-        <input type="text" id="electric" class="expense house" placeholder="Electric">
-        <input type="text" id="gas" class="expense house" placeholder="Gas">
-        <input type="text" id="TV" class="expense house" placeholder="TV">
-        <input type="text" id="cable" class="expense house" placeholder="Cable">
-        <input type="text" id="internet" class="expense house" placeholder="Internet">
-        <input type="text" id="phone" class="expense house" placeholder="Phone">
+        <div>
+          <h3>Housing:</h3>
+          <button class="add-category" id="house-add">Add Category</button>
+        </div>
+        <span>
+          <input type="text" id="rent" class="expense house" placeholder="Mortgage/Rent">
+          <input type="text" id="home-insurance" class="expense house" placeholder="Renter/Home Insurance">
+          <input type="text" id="water" class="expense house" placeholder="Water">
+          <input type="text" id="electric" class="expense house" placeholder="Electric">
+          <input type="text" id="gas" class="expense house" placeholder="Gas">
+          <input type="text" id="TV" class="expense house" placeholder="TV">
+          <input type="text" id="cable" class="expense house" placeholder="Cable">
+          <input type="text" id="internet" class="expense house" placeholder="Internet">
+          <input type="text" id="phone" class="expense house" placeholder="Phone">
+        </span>
       </section>
 
       <section class="step-content">
         <h2>Monthly Budget</h2>
-        <h3>Transportation:</h3>
-        <button class="add-category" id="transport-add">Add Category</button>
+        <div>
+          <h3>Transportation:</h3>
+          <button class="add-category" id="transport-add">Add Category</button>
+        </div>
 
-        <input type="text" id="car-pay" class="expense transport" placeholder="Car Payment">
-        <input type="text" id="car-insurance" class="expense transport" placeholder="Car Insurance">
-        <input type="text" id="gasoline" class="expense transport" placeholder="Gas">
-        <input type="text" id="car-repair" class="expense transport" placeholder="Car Repairs">
+        <span>
+          <input type="text" id="car-pay" class="expense transport" placeholder="Car Payment">
+          <input type="text" id="car-insurance" class="expense transport" placeholder="Car Insurance">
+          <input type="text" id="gasoline" class="expense transport" placeholder="Gas">
+          <input type="text" id="car-repair" class="expense transport" placeholder="Car Repairs">
+        </span>
       </section>
 
       <section class="step-content">
         <h2>Monthly Budget</h2>
-        <h3>Educational:</h3>
-        <button class="add-category" id="edu-add">Add Category</button>
+        <div>
+          <h3>Educational:</h3>
+          <button class="add-category" id="edu-add">Add Category</button>
+        </div>
 
-        <input type="text" id="supplies" class="expense education" placeholder="School Supplies">
-        <input type="text" id="edu-loan" class="expense education" placeholder="Student Loans">
-        <input type="text" id="tuition" class="expense education" placeholder="College Tuition">
+        <span>
+          <input type="text" id="supplies" class="expense education" placeholder="School Supplies">
+          <input type="text" id="edu-loan" class="expense education" placeholder="Student Loans">
+          <input type="text" id="tuition" class="expense education" placeholder="College Tuition">
+        </span>
       </section>
 
       <section class="step-content">
         <h2>Monthly Budget</h2>
-        <h3>Food & Personal:</h3>
-        <button class="add-category" id="food-add">Add Category</button>
+        <div>
+          <h3>Food & Personal:</h3>
+          <button class="add-category" id="food-add">Add Category</button>
+        </div>
 
-        <input type="text" id="groceries" class="expense food" placeholder="Groceries/Household">
-        <input type="text" id="clothes" class="expense food" placeholder="Clothing">
-        <input type="text" id="entertainment" class="expense food" placeholder="Entertainment">
-        <input type="text" id="pet" class="expense food" placeholder="Pet Supplies">
+        <span>
+          <input type="text" id="groceries" class="expense food" placeholder="Groceries/Household">
+          <input type="text" id="clothes" class="expense food" placeholder="Clothing">
+          <input type="text" id="entertainment" class="expense food" placeholder="Entertainment">
+          <input type="text" id="pet" class="expense food" placeholder="Pet Supplies">
+        </span>
       </section>
 
       <section class="step-content">
         <h2>Monthly Budget</h2>
-        <h3>Savings:</h3>
-        <button class="add-category" id="savings-add">Add Category</button>
+        <div>
+          <h3>Savings:</h3>
+          <button class="add-category" id="savings-add">Add Category</button>
+        </div>
 
-        <input type="text" id="savings-emergency" class="expense savings" placeholder="Emergency Funds">
-        <input type="text" id="invest" class="expense savings" placeholder="Investments">
-        <input type="text" id="retire" class="expense savings" placeholder="Retirement">
+        <span>
+          <input type="text" id="savings-emergency" class="expense savings" placeholder="Emergency Funds">
+          <input type="text" id="invest" class="expense savings" placeholder="Investments">
+          <input type="text" id="retire" class="expense savings" placeholder="Retirement">
+        </span>
       </section>
+      <canvas id="myChart"></canvas>
     </main>
     <footer>
         <nav>
