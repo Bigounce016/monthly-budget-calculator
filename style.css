@@ -19,6 +19,21 @@ body {
   min-height: 100%;
 }
 
+
+#chart {
+  width: 60%;
+  border: 1px solid cyan;
+}
+#bigOrganize {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+#calc {
+  border: 1px solid pink;
+}
+/* borders are temporary until the organization is right  */
+
 img {
  width: 100%;
  height: auto;
