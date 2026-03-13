@@ -27,6 +27,20 @@ function init() {
         });
     });
 
+    //create function to create expsense input fields
+    function createExpenseInput() {
+        // Implementation for creating expense input fields
+        const expenseContainer = document.getElementById("add-category");
+        const input = document.createElement("input");
+        input.type = "number";
+        input.placeholder = "Enter expense amount";
+        expenseContainer.appendChild(input);
+
+    }
+    createExpenseInput();
+    
+
+
     async function getCareers() {
         const url = "https://eecu-data-server.vercel.app/data"; //grab url
         try {
@@ -106,22 +120,9 @@ function init() {
         });
         localStorage.setItem("savedExpenses", JSON.stringify(savedExpenses)); //saving object
 
-        if (currentChart) currentChart.destroy(); //destroy chart
-        currentChart = new Chart(canvas, //new chart
-            {
-               type: "doughnut",
-               data: {
-                 labels: ["House", "Transport", "Education", "Food", "Savings"],
-                 datasets: [{ label: "$", data: [house, transport, education, food, savings] }]
-               },
-               options: {
-                 plugins: {
-                   title: { display: true, text: `Expenses by Catagory` }
-                 }
-               }
-             }
-       )
-    }
+        currentChart.data.datasets[0] = { label: "$", data: [house, transport, education, food, savings] }
+        currentChart.update(); //new Chart(canvas, //new chart
+     }
 
     function save() {
         const pullExpenses = JSON.parse(localStorage.getItem("savedExpenses")); //grab object
@@ -139,6 +140,8 @@ function init() {
     })
 
 }
+
+
 
 
 
