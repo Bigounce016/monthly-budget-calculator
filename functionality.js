@@ -4,7 +4,8 @@
 function init() {
     const steps = document.querySelectorAll(".step a"); // Select all step circles
     const content = document.querySelectorAll(".step-content"); // Select all content sections
-    const inputs = document.querySelectorAll(".expense"); //grab all input boxes
+    // const inputs = document.querySelectorAll(".expense"); //grab all input boxes
+    const localInputs = document.getElementsByClassName("expense");
     const canvas = document.getElementById("myChart");
     const calculator = document.getElementById("Calculator");
 
@@ -28,16 +29,26 @@ function init() {
     });
 
     //create function to create expsense input fields
-    function createExpenseInput() {
+    function createExpenseInput(expenseType) {
         // Implementation for creating expense input fields
-        const expenseContainer = document.getElementById("add-category");
+        const expenseContainer = document.getElementById(expenseType + "-expenses");
         const input = document.createElement("input");
+        input.classList.add("expense", expenseType);
         input.type = "number";
-        input.placeholder = "Enter expense amount";
+        input.placeholder = `Enter ${expenseType} expense amount`;
         expenseContainer.appendChild(input);
-
     }
-    createExpenseInput();
+
+    let stupidButtons = document.querySelectorAll(".add-category"); //grab all add category buttons
+    stupidButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            console.log("stupid button clicked");
+            let expenseType = button.id.split("-")[0]; // Get the expense type from the button ID
+            console.log("The stupid expense type is: ", expenseType);
+            createExpenseInput(expenseType);
+        });
+    });
+
     
 
 
@@ -89,7 +100,7 @@ function init() {
     getCareers();
     save();
     function calcSaveChart() {
-
+         const  inputs = document.querySelectorAll(".expense"); //grab all input boxes
         const savedExpenses = {};
         let house = 0;
         let transport = 0; //variables for chart and totals
@@ -126,7 +137,8 @@ function init() {
 
     function save() {
         const pullExpenses = JSON.parse(localStorage.getItem("savedExpenses")); //grab object
-        inputs.forEach(input => {
+        let inputsArr = Array.from(document.querySelectorAll(".expense")); //turn into array to use forEach
+        inputsArr.forEach(input => {
         if(pullExpenses){
             if(pullExpenses[input.id]){
                 input.value = pullExpenses[input.id] //grab object and insert saved values in textbox
@@ -139,7 +151,7 @@ function init() {
         calcSaveChart(); //for any input, run calculations, save, and chart
     })
 
-}
+} 
 
 
 

@@ -148,7 +148,7 @@ nav a:hover {
       background-color: var(--brand-color);
     }
 
-    .step-content.active span {
+    .step-content.active div {
       display: flex;
       flex-wrap: wrap;  /*Figure out how to align textboxes center somehow, this is roughly center*/
       gap: .5rem;
@@ -199,12 +199,6 @@ nav a:hover {
     color: var(--brand-color-light);
   }
 
-
-.dropdown {
-    display: flex;
-
-}
-
 #career {
     color: white;
     background-color: #0A5AA7;
@@ -212,7 +206,3 @@ nav a:hover {
     font-size: 24px;
     width: 50vw;
 }
-
-
-
-
