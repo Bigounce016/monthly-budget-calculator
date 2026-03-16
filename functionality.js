@@ -179,31 +179,63 @@ function init() {
     'savings-emergency': 's-savings-emergency', 'invest': 's-invest', 'retire': 's-retire'
   };
 
-  function updateSummaryAndTotals() {
-    const inputs = document.querySelectorAll('.expense');
-    let house = 0, transport = 0, education = 0, food = 0, savingsTotal = 0, total = 0;
+  function updateSummaryAndTotals(savedData = null) {
+
+  const inputs = document.querySelectorAll('.expense');
+
+  let data = {};
+
+  // If we have inputs, read from them
+  if (inputs.length > 0) {
     inputs.forEach(input => {
-      const val = Number(input.value) || 0;
-      total += val;
-      const summaryId = summaryMap[input.id];
-      if (summaryId) {
-        const el = document.getElementById(summaryId);
-        if (el) el.textContent = val.toFixed(2) + '$';
-      }
-      if (input.classList.contains('house')) house += val;
-      else if (input.classList.contains('transport')) transport += val;
-      else if (input.classList.contains('education')) education += val;
-      else if (input.classList.contains('food')) food += val;
-      else if (input.classList.contains('savings')) savingsTotal += val;
+      data[input.id] = Number(input.value) || 0;
     });
-    const spentEl = document.getElementById('total-spent-display');
-    const leftEl = document.getElementById('total-left-display');
-    if (spentEl) spentEl.textContent = total.toFixed(2) + '$';
-    if (leftEl) leftEl.textContent = (0 - total).toFixed(2) + '$';
-    const cats = [house, transport, education, food, savingsTotal];
-    const ids = ['pct-house', 'pct-transport', 'pct-education', 'pct-food', 'pct-savings'];
-    cats.forEach((val, i) => { const el = document.getElementById(ids[i]); if (el) el.textContent = total > 0 ? Math.round((val / total) * 100) + '%' : '0%'; });
+  } 
+  // Otherwise use saved data (summary page)
+  else if (savedData) {
+    data = savedData;
+  } 
+  else {
+    data = JSON.parse(localStorage.getItem('savedExpenses') || '{}');
   }
+
+  let house = 0, transport = 0, education = 0, food = 0, savingsTotal = 0, total = 0;
+
+  Object.keys(data).forEach(id => {
+
+    const val = Number(data[id]) || 0;
+    total += val;
+
+    const summaryId = summaryMap[id];
+    if (summaryId) {
+      const el = document.getElementById(summaryId);
+      if (el) el.textContent = val.toFixed(2) + '$';
+    }
+
+    const input = document.getElementById(id);
+
+    if (input?.classList.contains('house')) house += val;
+    else if (input?.classList.contains('transport')) transport += val;
+    else if (input?.classList.contains('education')) education += val;
+    else if (input?.classList.contains('food')) food += val;
+    else if (input?.classList.contains('savings')) savingsTotal += val;
+
+  });
+
+  const spentEl = document.getElementById('total-spent-display');
+  const leftEl = document.getElementById('total-left-display');
+
+  if (spentEl) spentEl.textContent = total.toFixed(2) + '$';
+  if (leftEl) leftEl.textContent = (0 - total).toFixed(2) + '$';
+
+  const cats = [house, transport, education, food, savingsTotal];
+  const ids = ['pct-house','pct-transport','pct-education','pct-food','pct-savings'];
+
+  cats.forEach((val,i) => {
+    const el = document.getElementById(ids[i]);
+    if (el) el.textContent = total > 0 ? Math.round((val/total)*100)+'%' : '0%';
+  });
+}
 
   // initial run
   save();
