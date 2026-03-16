@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Summary - EECU Budget Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="functionality.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sniglet:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+        <div class="logo">
+            <img src="EECULogo.png" alt="EECU Logo" />
+        </div>
+      <nav>
+        <ul>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Savings & Checking</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Loans & Credit Cards</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Online & Mobile</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Insure & Invest</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">News & Resources</a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Money 101</a>
+        </ul>
+        <button class="Login">Login</button>
+      </nav>
+    </header>
+
+    <main class="summary-page">
+      <section class="page-intro">
+        <h1>Budget Summary</h1>
+        <p>Overview of your monthly expenses and totals.</p>
+        <a class="back-link" href="index.html">Back to Calculator</a>
+      </section>
+
+      <section id="summary-content">
+        <!-- Copied summary sections from index.html -->
+        <div class="summary-category">
+          <div class="summary-category-header">
+            <span class="summary-dot" style="background:#1a56a0;"></span>
+            <strong>Housing</strong>
+          </div>
+          <hr class="summary-hr">
+          <ul class="summary-list">
+            <li><span>Mortgage/Rent:</span> <span class="sval" id="s-rent">0.00$</span></li>
+            <li><span>Renter/Home Insurance:</span> <span class="sval" id="s-home-insurance">0.00$</span></li>
+            <li><span>Water:</span> <span class="sval" id="s-water">0.00$</span></li>
+            <li><span>Gas:</span> <span class="sval" id="s-gas">0.00$</span></li>
+            <li><span>Electric:</span> <span class="sval" id="s-electric">0.00$</span></li>
+            <li><span>TV:</span> <span class="sval" id="s-TV">0.00$</span></li>
+            <li><span>Cable:</span> <span class="sval" id="s-cable">0.00$</span></li>
+            <li><span>Internet:</span> <span class="sval" id="s-internet">0.00$</span></li>
+            <li><span>Phone:</span> <span class="sval" id="s-phone">0.00$</span></li>
+          </ul>
+        </div>
+
+        <div class="summary-category">
+          <div class="summary-category-header">
+            <span class="summary-dot" style="background:#2e9e4f;"></span>
+            <strong>Transportation</strong>
+          </div>
+          <hr class="summary-hr">
+          <ul class="summary-list">
+            <li><span>Car Payment:</span> <span class="sval" id="s-car-pay">0.00$</span></li>
+            <li><span>Car Insurance:</span> <span class="sval" id="s-car-insurance">0.00$</span></li>
+            <li><span>Gas:</span> <span class="sval" id="s-gasoline">0.00$</span></li>
+            <li><span>Car Repairs:</span> <span class="sval" id="s-car-repair">0.00$</span></li>
+          </ul>
+        </div>
+
+        <div class="summary-category">
+          <div class="summary-category-header">
+            <span class="summary-dot" style="background:#3ecfcf;"></span>
+            <strong>Education</strong>
+          </div>
+          <hr class="summary-hr">
+          <ul class="summary-list">
+            <li><span>School Supplies:</span> <span class="sval" id="s-supplies">0.00$</span></li>
+            <li><span>Student Loans:</span> <span class="sval" id="s-edu-loan">0.00$</span></li>
+            <li><span>College Tuition:</span> <span class="sval" id="s-tuition">0.00$</span></li>
+          </ul>
+        </div>
+
+        <div class="summary-category">
+          <div class="summary-category-header">
+            <span class="summary-dot" style="background:#8a3fc7;"></span>
+            <strong>Food and Personal</strong>
+          </div>
+          <hr class="summary-hr">
+          <ul class="summary-list">
+            <li><span>Groceries/Household:</span> <span class="sval" id="s-groceries">0.00$</span></li>
+            <li><span>Clothing:</span> <span class="sval" id="s-clothes">0.00$</span></li>
+            <li><span>Entertainment:</span> <span class="sval" id="s-entertainment">0.00$</span></li>
+            <li><span>Pet Supplies:</span> <span class="sval" id="s-pet">0.00$</span></li>
+          </ul>
+        </div>
+
+        <div class="summary-category">
+          <div class="summary-category-header">
+            <span class="summary-dot" style="background:#e0197d;"></span>
+            <strong>Savings</strong>
+          </div>
+          <hr class="summary-hr">
+          <ul class="summary-list">
+            <li><span>Emergency Funds:</span> <span class="sval" id="s-savings-emergency">0.00$</span></li>
+            <li><span>Investments:</span> <span class="sval" id="s-invest">0.00$</span></li>
+            <li><span>Retirement:</span> <span class="sval" id="s-retire">0.00$</span></li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section id="summary-chart">
+        <canvas id="myChart"></canvas>
+        <div id="totals-row">
+          <div class="total-box">
+            <span class="total-label">Total Spent:</span>
+            <span class="total-value" id="total-spent-display">0.00$</span>
+          </div>
+          <div class="total-box">
+            <span class="total-label">Total left:</span>
+            <span class="total-value" id="total-left-display">0.00$</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <nav>
+         <ul>
+          <li><a href="">Footer Link 1</a></li>
+          <li><a href="">Footer Link 2</a></li>
+          <li><a href="">Footer Link 3</a></li>
+          <li><a href="">Footer Link 4</a></li>
+         </ul>
+      </nav>
+      <div class="logo">
+          <img src="EECULogo.png" alt="EECU Logo" />
+      </div>
+      <nav>
+         <ul>
+          <li><a href="">Footer Link 1</a></li>
+          <li><a href="">Footer Link 2</a></li>
+          <li><a href="">Footer Link 3</a></li>
+         </ul>
+      </nav>
+    </footer>
+
+  </body>
+</html>

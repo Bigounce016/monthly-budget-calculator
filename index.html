@@ -62,15 +62,43 @@
     <main id="Calculator">
       <!-- TO DO: Add content to the steps -->
 
-      <section class="step-content active">
+     <section class="step-content active">
         <h2>Step 1</h2>
         <div class="dropdown">
           <select id="career" name="career">
             <option value="" disabled selected hidden>Select Job Option <img src="#" alt="dropdown arrow"></option>
           </select>
         </div>
-        <section>
-          <h3>Taxes</h3>
+        <section id="tax-table-section">
+          <table id="tax-table">
+            <thead>
+              <tr>
+                <th colspan="2">Taxes</th>
+              </tr>
+              <tr class="tax-col-headers">
+                <td>Tax percentage</td>
+                <td>Income</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Medicare<br><span class="tax-rate">1.45%</span></td>
+                <td class="tax-income" id="tax-medicare">Undefined</td>
+              </tr>
+              <tr>
+                <td>Social Security<br><span class="tax-rate">6.2%</span></td>
+                <td class="tax-income" id="tax-social-security">Undefined</td>
+              </tr>
+              <tr>
+                <td>Federal Income Tax<br><span class="tax-rate" id="fed-rate">???%</span></td>
+                <td class="tax-income" id="tax-federal">Undefined</td>
+              </tr>
+              <tr>
+                <td>State Tax<br><span class="tax-rate">4%</span></td>
+                <td class="tax-income" id="tax-state">Undefined</td>
+              </tr>
+            </tbody>
+          </table>
           <p id="careerTitle"></p>
         </section>
       </section>
@@ -150,12 +178,13 @@
           <input type="text" id="invest" class="expense savings" placeholder="Investments">
           <input type="text" id="retire" class="expense savings" placeholder="Retirement">
         </div>
+        <button src="summary.html" id="save-btn">Save Budget</button>
       </section>
     </main>
   </div>
       <div id="chart">
     <canvas id="myChart"></canvas>
-      </div>
+    </div>
     </div>
     <footer>
         <nav>
@@ -178,4 +207,4 @@
         </nav>
     </footer>
   </body>
-</html> 
+</html>

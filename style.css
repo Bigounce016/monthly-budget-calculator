@@ -20,8 +20,63 @@ body {
 }
 
 
-#chart {
-  width: fit-content;
+#chart, #summary-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+  max-width: 720px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+}
+
+/* Make the canvas responsive without stretching */
+canvas#myChart {
+  width: 100%;
+  height: auto; /* let aspect-ratio control height */
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  display: block;
+}
+
+/* Totals row styling when under the chart */
+#totals-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.total-box {
+  background-color: var(--brand-color);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1 1 45%;
+  min-width: 120px;
+}
+
+.total-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+.total-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  canvas#myChart { height: 240px !important; }
+  #totals-row { flex-direction: column; align-items: stretch; }
+  .total-box { width: 100%; }
 }
 #bigOrganize {
   display: flex;
@@ -205,4 +260,143 @@ nav a:hover {
     padding: 16px;
     font-size: 24px;
     width: 50vw;
+}
+
+/* ── Step 6 Summary Section ── */
+#summary-section {
+  text-align: left !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  background: none !important;
+  color: var(--text-color) !important;
+}
+
+#summary-section h2 {
+  background-color: var(--brand-color) !important;
+  color: white !important;
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.summary-category {
+  padding: 0.5rem 1rem;
+}
+
+.summary-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.summary-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.summary-hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 0.1rem 0;
+  color: #222;
+}
+
+.sval {
+  font-weight: 600;
+}
+
+#totals-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.total-box {
+  background-color: var(--brand-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 130px;
+}
+
+.total-label {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.total-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+#tax-table-section {
+  padding: 1rem;
+}
+ 
+#tax-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--brand-color);
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+ 
+#tax-table thead th {
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.75rem;
+  text-align: center;
+  background-color: var(--brand-color);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+ 
+#tax-table .tax-col-headers td {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+ 
+#tax-table tbody tr {
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+ 
+#tax-table tbody td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+ 
+.tax-rate {
+  display: block;
+  font-size: 0.9rem;
+}
+ 
+.tax-income {
+  font-style: italic;
+  opacity: 0.85;
 }
