@@ -90,7 +90,11 @@
                 <td class="tax-income" id="tax-social-security">Undefined</td>
               </tr>
               <tr>
-                <td>Federal Income Tax<br><span class="tax-rate" id="fed-rate">???%</span></td>
+                <td>Federal Income Tax<br>
+                  <span class="tax-rate">10% ($0–$12,400)</span><br>
+                  <span class="tax-rate">12% ($12,401–$50,400)</span><br>
+                  <span class="tax-rate">22% (over $50,400)</span>
+                </td>
                 <td class="tax-income" id="tax-federal">Undefined</td>
               </tr>
               <tr>
@@ -98,6 +102,16 @@
                 <td class="tax-income" id="tax-state">Undefined</td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr class="net-income-row">
+                <td><strong>Net Annual Income</strong></td>
+                <td class="tax-income" id="tax-net-annual">—</td>
+              </tr>
+              <tr class="net-income-row net-monthly-row">
+                <td><strong>Net Monthly Income</strong></td>
+                <td class="tax-income" id="tax-net-monthly">—</td>
+              </tr>
+            </tfoot>
           </table>
           <p id="careerTitle"></p>
         </section>

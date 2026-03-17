@@ -400,6 +400,34 @@ nav a:hover {
   font-style: italic;
   opacity: 0.85;
 }
+
+.net-income-row {
+  border-top: 2px solid rgba(255,255,255,0.6) !important;
+  background-color: rgba(255,255,255,0.12);
+}
+
+.net-income-row td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 0.95rem;
+}
+
+.net-monthly-row td {
+  font-size: 1.05rem;
+}
+
+.net-monthly-row strong {
+  font-size: 1rem;
+}
+
+#tax-net-monthly {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.1rem;
+  opacity: 1;
+  color: #a8f0a8;
+}
 @media (max-width: 600px) {
   #tax-table thead th, #tax-table .tax-col-headers td, #tax-table tbody td {
     font-size: 0.8rem;
@@ -459,4 +487,3 @@ nav a:hover {
   footer { padding: 1rem 2rem; }
   #career { width: 40vw; }
 }
-
