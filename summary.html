@@ -129,14 +129,23 @@
 
       <section id="summary-chart">
         <canvas id="myChart"></canvas>
-        <div id="totals-row">
-          <div class="total-box">
-            <span class="total-label">Total Spent:</span>
-            <span class="total-value" id="total-spent-display">$0.00</span>
+        <div id="totals-and-tip">
+          <div id="totals-row">
+            <div class="total-box">
+              <span class="total-label">Total Spent:</span>
+              <span class="total-value" id="total-spent-display">$0.00</span>
+            </div>
+            <div class="total-box">
+              <span class="total-label">Total left:</span>
+              <span class="total-value" id="total-left-display">$0.00</span>
+            </div>
           </div>
-          <div class="total-box">
-            <span class="total-label">Total left:</span>
-            <span class="total-value" id="total-left-display">$0.00</span>
+          <div id="wise-tip-box">
+            <span id="wise-tip-icon">💡</span>
+            <div>
+              <strong>Wise Up Tip</strong>
+              <p id="wise-tip-text"></p>
+            </div>
           </div>
         </div>
       </section>

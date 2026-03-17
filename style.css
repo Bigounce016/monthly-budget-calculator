@@ -41,12 +41,59 @@ canvas#myChart {
 }
 
 /* Totals row styling when under the chart */
-#totals-row {
+#totals-and-tip {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
   gap: 1rem;
-  justify-content: space-between;
   width: 100%;
   margin-top: 0.5rem;
+}
+
+#totals-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 0 0 auto;
+}
+
+#wise-tip-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #1a3a6b, #0a5aa7);
+  border-left: 4px solid #a8d4ff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: white;
+  flex: 1;
+}
+
+#wise-tip-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+#wise-tip-box strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  margin-bottom: 0.35rem;
+}
+
+#wise-tip-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  #totals-and-tip { flex-direction: column; }
+  #totals-row { flex-direction: row; }
 }
 
 .total-box {

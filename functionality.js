@@ -4,7 +4,6 @@ function init() {
   const canvas = document.getElementById('myChart');
   const calculator = document.getElementById('Calculator');
 
-
   const onSummaryPage = document.querySelectorAll('.expense').length === 0 && !calculator;
 
 
@@ -18,7 +17,6 @@ function init() {
       });
     });
   });
-
 
   function createExpenseInput(expenseType) {
     const expenseContainer = document.getElementById(`${expenseType}-expenses`);
@@ -50,7 +48,6 @@ function init() {
   document.querySelectorAll('.add-category').forEach(btn => btn.addEventListener('click', () => {
     createExpenseInput(btn.id.split('-')[0]);
   }));
-
 
   const saveBtn = document.getElementById('save-btn');
   if (saveBtn) {
@@ -161,7 +158,6 @@ function init() {
     });
   }
 
-
   function calcSaveChart() {
     // Guard: never run this on the summary page
     if (onSummaryPage) return;
@@ -196,7 +192,7 @@ function init() {
     }
   }
 
- 
+
   function restoreInputs() {
     if (onSummaryPage) return;
     const saved = JSON.parse(localStorage.getItem('savedExpenses') || '{}');
@@ -234,6 +230,7 @@ function init() {
     'invest':           's-invest',
     'retire':           's-retire'
   };
+
 
   function updateSummaryAndTotals() {
     let data       = {};
@@ -348,6 +345,29 @@ function init() {
     }
   }
 
+
+  if (onSummaryPage) {
+    const tips = [
+      "Try to save at least 3–6 months of expenses as an emergency fund before making big purchases.",
+      "The 50/30/20 rule: spend 50% on needs, 30% on wants, and save 20% of your income.",
+      "Paying yourself first — putting money into savings before spending — is one of the most effective habits you can build.",
+      "Even saving $25 a week adds up to $1,300 a year. Small amounts compound over time.",
+      "A credit union like EECU often offers lower loan rates and higher savings rates than big banks.",
+      "Avoid lifestyle inflation — when your income goes up, try to save the difference rather than spend it.",
+      "Interest on debt works against you the same way compound interest on savings works for you. Pay off high-interest debt first.",
+      "Automating your savings means you never have to think about it — it just happens.",
+      "Renter's insurance typically costs less than $20/month and covers way more than most people realize.",
+      "A budget isn't about restricting yourself — it's about making sure your money goes where you actually want it to go.",
+      "Check your subscriptions every few months. Most people are paying for at least one they forgot about.",
+      "Investing even a small amount early beats investing a large amount late, thanks to compound growth.",
+      "If your job offers a 401(k) match, contribute enough to get the full match — it's free money.",
+      "Building good credit early opens doors: better loan rates, easier apartment approvals, and more.",
+      "Needs vs. wants: before a purchase, ask yourself which category it falls into. It changes how you feel about spending."
+    ];
+    const tip = tips[Math.floor(Math.random() * tips.length)];
+    const tipEl = document.getElementById('wise-tip-text');
+    if (tipEl) tipEl.textContent = tip;
+  }
 
   if (!onSummaryPage) {
     restoreInputs(); // restore saved values into calculator inputs
